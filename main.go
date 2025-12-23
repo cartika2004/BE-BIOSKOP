@@ -16,7 +16,7 @@ func main() {
 	database.ConnectDB()
 	database.ConnectRedis()
 
-	//database.SeedAll()
+	database.SeedAll()
 
 	// Repo -> Service -> Handler
 	userRepo := repository.NewUserRepository(database.DB)
