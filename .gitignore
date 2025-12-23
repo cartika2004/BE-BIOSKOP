@@ -1,0 +1,10 @@
+# Ignore Config Rahasia
+config.yaml
+
+# Ignore File Sampah Mac & VS Code
+.DS_Store
+.vscode/
+
+# Ignore File Binary (Hasil Build)
+main
+project-bioskop
