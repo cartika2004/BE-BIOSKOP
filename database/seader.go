@@ -1,5 +1,6 @@
 package database
 
+// Biar otomatis ada isinya dbnya
 import (
 	"fmt"
 	"log"
@@ -11,7 +12,7 @@ import (
 func SeedAll() {
 	seedMovies()
 	seedStudiosAndSeats()
-	seedSchedules() // <--- Tambahkan pemanggilan ini!
+	seedSchedules() 
 }
 
 func seedMovies() {
@@ -27,7 +28,7 @@ func seedMovies() {
 	}
 
 	DB.Create(&movies)
-	log.Println("✅ Data Film Berhasil Ditanam!")
+	log.Println("Data Film Berhasil Ditanam!")
 }
 
 func seedStudiosAndSeats() {
@@ -47,7 +48,7 @@ func seedStudiosAndSeats() {
 	DB.Create(&studio2)
 	generateSeatsForStudio(studio2.ID, []string{"A"}, 10)
 
-	log.Println("✅ Data Studio & Kursi Berhasil Ditanam!")
+	log.Println("Data Studio & Kursi Berhasil Ditanam!")
 }
 
 func generateSeatsForStudio(studioID uint, rows []string, cols int) {
@@ -81,7 +82,7 @@ func seedSchedules() {
 	DB.First(&studio1, 1) // ID 1: Regular
 	DB.First(&studio2, 2) // ID 2: VIP
 
-	// Tentukan tanggal: BESOK dan LUSA (biar valid buat dipesan)
+	// Tentukan tanggal: misal BESOK dan LUSA (biar valid buat dipesan)
 	tomorrow := time.Now().Add(24 * time.Hour)
 	dayAfter := time.Now().Add(48 * time.Hour)
 
@@ -110,5 +111,5 @@ func seedSchedules() {
 	}
 
 	DB.Create(&schedules)
-	log.Println("✅ Data Jadwal (Schedules) Berhasil Ditanam!")
+	log.Println("Data Jadwal (Schedules) Berhasil Ditanam!")
 }
